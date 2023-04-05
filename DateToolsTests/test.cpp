@@ -1,6 +1,7 @@
 #include "pch.h"
-
-TEST(TestCaseName, TestName) {
-  EXPECT_EQ(1, 1);
-  EXPECT_TRUE(true);
-}
+#include "..\DateTools\DateRangeDaysCounter.h"
+	TEST(DateRangeDaysCounterTets, countNumberOfDaysBetweenTwoDatesTest) {
+		DateTimeRoutines::DateRangeDaysCounter counter;
+		EXPECT_EQ(counter.countNumberOfDaysBetweenTwoDates("", ""), -1);
+		EXPECT_TRUE(true);
+	}

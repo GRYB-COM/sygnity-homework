@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "DateRangeDaysCounter.h"
-DateRangeDaysCounter::DateRangeDaysCounter()
+using namespace DateTimeRoutines;
+DateRangeDaysCounter::DateRangeDaysCounter(void)
 {
 
 }
