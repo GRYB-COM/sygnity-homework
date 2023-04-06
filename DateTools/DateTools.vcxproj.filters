@@ -21,6 +21,12 @@
     <ClInclude Include="DateRangeDaysCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DateRangeDaysRepo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DateRange.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -30,6 +36,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DateRangeDaysCounter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DateRangeDaysRepo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
