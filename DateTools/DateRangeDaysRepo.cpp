@@ -28,8 +28,10 @@ time_t DateRangeDaysRepo::readDateFromString(const std::string& dateAsString)
  
     std::tm dateAsTM = {0,0,0,0,0,0,0,0,0};
     std::istringstream dateAsStream(dateAsString);
-    dateAsStream >> std::get_time
-    return time_t();
+    dateAsStream.imbue(std::locale("pl_PL.utf-8"));
+    dateAsStream >> std::get_time(&dateAsTM, DATE_FORMAT.c_str());
+    if (dateAsStream.fail()) throw std::runtime_error("B³¹d parsowania daty:" + dateAsString + " "+ dateAsStream.str());
+    return std::mktime(&dateAsTM);
 }
 
 void DateRangeDaysRepo::writeDaysCount(const int daysCount)
