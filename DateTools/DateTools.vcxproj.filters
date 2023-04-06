@@ -21,10 +21,13 @@
     <ClInclude Include="DateRangeDaysCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DateRangeDaysRepo.h">
+    <ClInclude Include="DateRangeRepo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DateRange.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DateRangeMonthsCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,7 +41,10 @@
     <ClCompile Include="DateRangeDaysCounter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DateRangeDaysRepo.cpp">
+    <ClCompile Include="DateRangeRepo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DateRangeMonthsCounter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

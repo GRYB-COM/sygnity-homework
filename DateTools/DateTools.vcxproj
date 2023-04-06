@@ -100,12 +100,14 @@
   <ItemGroup>
     <ClInclude Include="DateRange.h" />
     <ClInclude Include="DateRangeDaysCounter.h" />
-    <ClInclude Include="DateRangeDaysRepo.h" />
+    <ClInclude Include="DateRangeRepo.h" />
+    <ClInclude Include="DateRangeMonthsCounter.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DateRangeDaysCounter.cpp" />
-    <ClCompile Include="DateRangeDaysRepo.cpp" />
+    <ClCompile Include="DateRangeRepo.cpp" />
+    <ClCompile Include="DateRangeMonthsCounter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

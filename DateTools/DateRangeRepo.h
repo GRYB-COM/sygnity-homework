@@ -1,14 +1,14 @@
 #pragma once
 #include <string>
-#include <ctime>
-class DateRange;
-class DateRangeDaysRepo
+struct DateRange;
+struct Date;
+class DateRangeRepo
 {
 public:
 	
-	void writeDaysCount(const int daysCount);
+	void writeMonthsCount(const int monthsCount);
 	DateRange readDateRange(void);
-	time_t readDateFromString(const std::string& dateAsString);
+	Date readDateFromString(const std::string& dateAsString);
 private:
 	const std::string FILE_IN_NAME = "input.txt";
 	const std::string FILE_OUT_NAME = "output.txt";
