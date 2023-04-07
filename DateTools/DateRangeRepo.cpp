@@ -48,7 +48,7 @@ bool DateRangeRepo::writeMonthsCount(const double monthsCount)
     std::ofstream fileToWrite(readExePath() + L"\\" + FILE_OUT_NAME);
     if (fileToWrite.is_open())
     {
-        fileToWrite << std::setprecision(1) << monthsCount;
+        fileToWrite <<std::fixed<< std::setprecision(2) << monthsCount;
     }
     else
     {
