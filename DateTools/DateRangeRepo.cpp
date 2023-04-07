@@ -5,10 +5,10 @@
 #include "DateRange.h"
 #include <sstream>
 #include <iomanip>
-
+#include <windows.h>
 DateRange DateRangeRepo::readDateRange(void)
 {
-    std::ifstream fileToRead(FILE_IN_NAME);
+    std::ifstream fileToRead(readExePath()+ L"\\"+ FILE_IN_NAME);
     DateRange result;
     if (fileToRead.is_open())
     {
@@ -18,7 +18,12 @@ DateRange DateRangeRepo::readDateRange(void)
         std::getline(fileToRead, dateAsString);
         result.DateTo = readDateFromString(dateAsString);
     }
-    else throw std::ios_base::failure("Nie uda³o siê otworzyæ pliku z zakresem dat.\n\r\tNazwa pliku: " + FILE_IN_NAME);
+    else
+    {
+        std::string message = "Nie uda³o siê otworzyæ pliku z zakresem dat.\n\r\tNazwa pliku: ";
+        //message += std::string( FILE_IN_NAME.c_str());
+        throw std::ios_base::failure(message);
+    }
     fileToRead.close();
     return result;
 }
@@ -35,8 +40,16 @@ Date DateRangeRepo::readDateFromString(const std::string& dateAsString)
     result.Year = dateAsTM.tm_year + 1900;
     result.Month = dateAsTM.tm_mon+1;
     result.Day = dateAsTM.tm_mday;
+    result.Seconds = std::mktime(&dateAsTM);
     return result;
 }
+std::wstring DateRangeRepo :: readExePath(void) {
+    TCHAR buffer[MAX_PATH] = { 0 };
+    GetModuleFileName(NULL, buffer, MAX_PATH);
+    std::wstring::size_type pos = std::wstring(buffer).find_last_of(L"\\/");
+    return std::wstring(buffer).substr(0, pos);
+}
+
 
 void DateRangeRepo::writeMonthsCount(const int monthsCount)
 {

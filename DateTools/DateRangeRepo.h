@@ -10,9 +10,11 @@ public:
 	DateRange readDateRange(void);
 	Date readDateFromString(const std::string& dateAsString);
 private:
-	const std::string FILE_IN_NAME = "input.txt";
-	const std::string FILE_OUT_NAME = "output.txt";
+	const std::wstring FILE_IN_NAME = L"input.txt";
+	const std::wstring FILE_OUT_NAME = L"output.txt";
 	const std::string DATE_FORMAT = "%Y-%m-%d";
+	std::wstring readExePath(void);
+
 
 };
 
