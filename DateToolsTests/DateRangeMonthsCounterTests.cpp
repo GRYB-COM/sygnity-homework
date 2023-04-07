@@ -2,9 +2,28 @@
 #include "gtest/gtest.h"
 #include "../DateTools/DateRangeMonthsCounter.h"
 #include "../DateTools/DateRange.h"
+#include "../DateTools/DateRangeRepo.h"
 TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates) {
 	DateRangeMonthsCounter counter;
-	DateRange range = { {0,0,0},{0,0,0} };
-	EXPECT_EQ(counter.countNumberOfMonthsBetweenTwoDates(range), 0);
+	DateRange range = { {1,2,3,0},{4,5,6,102629746} };
+	EXPECT_EQ(counter.countNumberOfMonthsBetweenTwoDates(range).Months, 39);
  
+}
+
+TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates1) {
+	DateRangeMonthsCounter counter;
+	DateRangeRepo repo;
+	DateRange range = { repo.readDateFromString("2022-08-16"),repo.readDateFromString("2023-04-07")};
+	EXPECT_EQ(counter.countNumberOfMonthsBetweenTwoDates(range).Months, 7);
+	EXPECT_EQ(counter.countNumberOfMonthsBetweenTwoDates(range).Days, 21);
+
+}
+
+TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates2) {
+	DateRangeMonthsCounter counter;
+	DateRangeRepo repo;
+	DateRange range = repo.readDateRange();
+	EXPECT_EQ(counter.countNumberOfMonthsBetweenTwoDates(range).Months, 11);
+	EXPECT_EQ(counter.countNumberOfMonthsBetweenTwoDates(range).Days, 30);
+
 }
