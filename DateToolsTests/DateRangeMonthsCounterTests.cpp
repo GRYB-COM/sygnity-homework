@@ -19,11 +19,19 @@ TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates1) {
 
 }
 
-TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates2) {
+TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates3) {
 	DateRangeMonthsCounter counter;
 	DateRangeRepo repo;
 	DateRange range = repo.readDateRange();
 	EXPECT_EQ(counter.countNumberOfMonthsBetweenTwoDates(range).Months, 11);
 	EXPECT_EQ(counter.countNumberOfMonthsBetweenTwoDates(range).Days, 30);
+
+}
+TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates2) {
+	DateRangeMonthsCounter counter;
+	DateRangeRepo repo;
+	DateRange range = { repo.readDateFromString("2020-12-01"),repo.readDateFromString("2020-12-03") };
+	double  monthsCount = counter.countNumberOfMonthsBetweenTwoDatesAsDouble(range);
+	EXPECT_EQ(monthsCount, 0.6);
 
 }

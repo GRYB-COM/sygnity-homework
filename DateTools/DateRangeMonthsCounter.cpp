@@ -2,8 +2,6 @@
 #include "DateRangeMonthsCounter.h"
 #include "DateRange.h"
 #include <chrono>
-
-
 MonthsCount DateRangeMonthsCounter::countNumberOfMonthsBetweenTwoDates(const DateRange& dateRange) const
 {
     std::time_t secondsDuration = dateRange.DateTo.Seconds - dateRange.DateFrom.Seconds;
@@ -17,4 +15,12 @@ MonthsCount DateRangeMonthsCounter::countNumberOfMonthsBetweenTwoDates(const Dat
     auto leaveDaysDifferrence = std::chrono::ceil<std::chrono::duration<long long, std::ratio<DAY_RATIO>>>(leaveDaysDifferenceInSeconds);
     MonthsCount result = { 12*differrenceInYears.count() + differrenceInMonths.count(),leaveDaysDifferrence.count()};
     return result;
+}
+
+double DateRangeMonthsCounter::countNumberOfMonthsBetweenTwoDatesAsDouble(const DateRange& dateRange) const
+{
+    MonthsCount monthsCount = countNumberOfMonthsBetweenTwoDates(dateRange);
+    double monthsCountAsDouble = monthsCount.Months;
+    monthsCountAsDouble += ((double)monthsCount.Days) / 30;
+    return monthsCountAsDouble;
 }
