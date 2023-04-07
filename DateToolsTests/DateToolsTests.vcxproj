@@ -33,6 +33,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
+    <ClInclude Include="..\DateTools\DateRange.h" />
     <ClInclude Include="..\DateTools\DateRangeDaysCounter.h" />
     <ClInclude Include="..\DateTools\DateRangeMonthsCounter.h" />
     <ClInclude Include="pch.h" />

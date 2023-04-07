@@ -21,6 +21,16 @@ double DateRangeMonthsCounter::countNumberOfMonthsBetweenTwoDatesAsDouble(const 
 {
     MonthsCount monthsCount = countNumberOfMonthsBetweenTwoDates(dateRange);
     double monthsCountAsDouble = monthsCount.Months;
-    monthsCountAsDouble += ((double)monthsCount.Days) / 30;
+    int daysInMonth = countOneMonthDays(dateRange.DateTo);
+    monthsCountAsDouble += ((double)monthsCount.Days) / daysInMonth;
     return monthsCountAsDouble;
+}
+
+int DateRangeMonthsCounter::countOneMonthDays(const Date& date) const
+{
+    int month = date.Month;
+    int daysInMonth = 0;
+    if (month < 7) daysInMonth = month % 2 == 1 ? 31 : 30;
+    else daysInMonth = month % 2 == 0 ? 31 : 30;
+    return daysInMonth;
 }

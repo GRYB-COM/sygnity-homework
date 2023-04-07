@@ -3,6 +3,7 @@
 #include "../DateTools/DateRangeMonthsCounter.h"
 #include "../DateTools/DateRange.h"
 #include "../DateTools/DateRangeRepo.h"
+#include <cmath>
 TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates) {
 	DateRangeMonthsCounter counter;
 	DateRange range = { {1,2,3,0},{4,5,6,102629746} };
@@ -27,11 +28,12 @@ TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates3) {
 	EXPECT_EQ(counter.countNumberOfMonthsBetweenTwoDates(range).Days, 30);
 
 }
-TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDates2) {
+TEST(DateRangeMonthsCounterTests, countNumberOfMonthsBetweenTwoDatesAsDouble) {
 	DateRangeMonthsCounter counter;
 	DateRangeRepo repo;
 	DateRange range = { repo.readDateFromString("2020-12-01"),repo.readDateFromString("2020-12-03") };
 	double  monthsCount = counter.countNumberOfMonthsBetweenTwoDatesAsDouble(range);
-	EXPECT_EQ(monthsCount, 0.6);
+	monthsCount = std::round(monthsCount * 100) / 100;
+	EXPECT_EQ(monthsCount, 0.06);
 
 }
