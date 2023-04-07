@@ -28,3 +28,9 @@ TEST(DateRangeRepoTests, readDateRange) {
 	EXPECT_EQ(dateRange.DateTo.Day, dateTo.Day);
 
 }
+TEST(DateRangeRepoTests, writeMonthsCount) {
+
+	DateRangeRepo repo;
+	EXPECT_TRUE(repo.writeMonthsCount(0.064517));
+
+}

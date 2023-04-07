@@ -20,8 +20,7 @@ DateRange DateRangeRepo::readDateRange(void)
     }
     else
     {
-        std::string message = "Nie uda³o siê otworzyæ pliku z zakresem dat.\n\r\tNazwa pliku: ";
-        //message += std::string( FILE_IN_NAME.c_str());
+        std::string message = "Problem z otwarciem pliku z zakresem dat!";
         throw std::ios_base::failure(message);
     }
     fileToRead.close();
@@ -36,23 +35,35 @@ Date DateRangeRepo::readDateFromString(const std::string& dateAsString)
     dateAsStream.imbue(std::locale("pl_PL.utf-8"));
     dateAsStream >> std::get_time(&dateAsTM, DATE_FORMAT.c_str());
     if (dateAsStream.fail()) throw std::runtime_error("B³¹d parsowania daty:" + dateAsString + " "+ dateAsStream.str());
-    Date result;
+    Date result = {};
     result.Year = dateAsTM.tm_year + 1900;
     result.Month = dateAsTM.tm_mon+1;
     result.Day = dateAsTM.tm_mday;
     result.Seconds = std::mktime(&dateAsTM);
     return result;
 }
-std::wstring DateRangeRepo :: readExePath(void) {
+
+bool DateRangeRepo::writeMonthsCount(const double monthsCount)
+{
+    std::ofstream fileToWrite(readExePath() + L"\\" + FILE_OUT_NAME);
+    if (fileToWrite.is_open())
+    {
+        fileToWrite << std::setprecision(1) << monthsCount;
+    }
+    else
+    {
+        std::string message = "Problem z otwarciem pliku wynikowego!";
+        throw std::ios_base::failure(message);
+    }
+    fileToWrite.close();
+    bool writeOK = true;
+    return writeOK;
+}
+
+std::wstring DateRangeRepo::readExePath(void) {
     TCHAR buffer[MAX_PATH] = { 0 };
     GetModuleFileName(NULL, buffer, MAX_PATH);
     std::wstring::size_type pos = std::wstring(buffer).find_last_of(L"\\/");
     return std::wstring(buffer).substr(0, pos);
-}
-
-
-void DateRangeRepo::writeMonthsCount(const int monthsCount)
-{
-    // TODO: Add your implementation code here.
 }
 

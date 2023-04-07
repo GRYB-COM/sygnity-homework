@@ -6,7 +6,7 @@ class DateRangeRepo
 {
 public:
 	
-	void writeMonthsCount(const int monthsCount);
+	bool writeMonthsCount(const double monthsCount);
 	DateRange readDateRange(void);
 	Date readDateFromString(const std::string& dateAsString);
 private:
